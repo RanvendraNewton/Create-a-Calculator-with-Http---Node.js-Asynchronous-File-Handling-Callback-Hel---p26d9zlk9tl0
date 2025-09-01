@@ -30,16 +30,16 @@ const server = http.createServer((req, res) => {
 
       if (array[2] === "add") {
 
-        fs.writeFile(result.txt, String(Number(array[0]) + Number(array[1])))
+        fs.writeFileSync("result.txt", String(Number(array[0]) + Number(array[1])))
         return res.end(String(Number(array[0]) + Number(array[1])))
       }
       else if (array[2] === "subtract") {
-        fs.writeFile(result.txt, String(Number(array[0]) - Number(array[1])))
+        fs.writeFileSync("result.txt", String(Number(array[0]) - Number(array[1])))
         return res.end(String(Number(array[0]) - Number(array[1])))
       }
 
       else if (array[2] === "multiply") {
-        fs.writeFile(result.txt, String(Number(array[0]) * Number(array[1])))
+        fs.writeFileSync("result.txt", String(Number(array[0]) * Number(array[1])))
         return res.end(String(Number(array[0]) * Number(array[1])))
       }
 
@@ -50,7 +50,7 @@ const server = http.createServer((req, res) => {
           return res.end("Division by zero")
 
         }
-        fs.writeFile(result.txt, String(Number(array[0]) / Number(array[1])))
+        fs.writeFileSync("result.txt", String(Number(array[0]) / Number(array[1])))
         return res.end(String(Number(array[0]) / Number(array[1])))
       }
 
