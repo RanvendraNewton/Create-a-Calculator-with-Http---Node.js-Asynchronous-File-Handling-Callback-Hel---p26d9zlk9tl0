@@ -22,19 +22,24 @@ const server = http.createServer((req, res) => {
       const array = data.split("\n");
 
       if (isNaN(Number(array[0])) || isNaN(Number(array[1]))) {
+
         res.writeHead(400, { "Content-type": "text/plain" })
         return res.end("Invalid Number")
 
       }
 
       if (array[2] === "add") {
+
+        fs.writeFile(result.txt, String(Number(array[0]) + Number(array[1])))
         return res.end(String(Number(array[0]) + Number(array[1])))
       }
       else if (array[2] === "subtract") {
+        fs.writeFile(result.txt, String(Number(array[0]) - Number(array[1])))
         return res.end(String(Number(array[0]) - Number(array[1])))
       }
 
-      else if (array[2] === "multipy") {
+      else if (array[2] === "multiply") {
+        fs.writeFile(result.txt, String(Number(array[0]) * Number(array[1])))
         return res.end(String(Number(array[0]) * Number(array[1])))
       }
 
@@ -45,6 +50,7 @@ const server = http.createServer((req, res) => {
           return res.end("Division by zero")
 
         }
+        fs.writeFile(result.txt, String(Number(array[0]) / Number(array[1])))
         return res.end(String(Number(array[0]) / Number(array[1])))
       }
 
